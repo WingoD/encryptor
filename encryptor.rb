@@ -1,17 +1,19 @@
+require 'pp'
+
 class Encryptor
   def cipher(rotation) #should  be a number#
     characters = (' '..'z').to_a
     rotated_characters = characters.rotate(rotation)
     Hash[characters.zip(rotated_characters)]
   end
-  def encrypt(message)
-    characters = message.split
+  def encrypt(rotation, message)
+    characters = message.split("")
     encrypted = characters.collect do |character|
-      cipher[character]
+      a = (cipher(rotation))[character]
     end
     encrypted_message = encrypted.join
   end
-  def decrypt(encrypted_message)
-    encrypt[encrypted_message]
+  def decrypt(rotation, encrypted_message)
+    encrypt(encrypted_message)
   end
 end

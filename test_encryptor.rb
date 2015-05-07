@@ -8,7 +8,7 @@ class EncryptorTest < MiniTest::Unit::TestCase
 
   def test_encrypt
     assert a = Encryptor.new
-    assert_equal("Uryy{", a.encrypt(13, "Hello"))
+    assert_equal("Uryy!", a.encrypt(13, "Hello"))
     assert true
   end
 end

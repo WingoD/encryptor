@@ -6,18 +6,20 @@ class Encryptor
     rotated_characters = characters.rotate(rotation)
     Hash[characters.zip(rotated_characters)]
   end
-  def encrypt(rotation, message)
+
+  def crypt(rotation, message)
     characters = message.split("")
     encrypted = characters.collect do |character|
       a = (cipher(rotation))[character]
     end
     encrypted_message = encrypted.join
   end
-  def decrypt(rotation, encrypted_message)
-    characters = encrypted_message.split("")
-    decrypted = characters.collect do |character|
-      a = (cipher(-rotation))[character]
-    end
-    decrypted_message = decrypted.join
+
+  def encrypt(rotation, message)
+    crypt(rotation, message)
+  end
+
+  def decrypt(rotation, message)
+    crypt(-rotation, message)
   end
 end

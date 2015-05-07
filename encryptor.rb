@@ -14,6 +14,10 @@ class Encryptor
     encrypted_message = encrypted.join
   end
   def decrypt(rotation, encrypted_message)
-    encrypt(encrypted_message)
+    characters = encrypted_message.split("")
+    decrypted = characters.collect do |character|
+      a = (cipher(-rotation))[character]
+    end
+    decrypted_message = decrypted.join
   end
 end
